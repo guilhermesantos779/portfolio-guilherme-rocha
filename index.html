@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Guilherme Rocha — AI-Native Developer e Co-fundador do MultiClipHub. Construo produtos reais com IA, do conceito ao deploy." />
+<meta name="author" content="Guilherme Rocha" />
+<meta name="theme-color" content="#080808" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Guilherme Rocha — AI-Native Developer" />
+<meta property="og:description" content="Construo produtos reais com IA · Co-fundador do MultiClipHub" />
+
+<title>Guilherme Rocha — AI-Native Developer</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   VARIÁVEIS — PRETO & DOURADO PREMIUM
+   ============================================================ */
+:root {
+  --bg:           #080808;
+  --bg2:          #0f0f0f;
+  --bg3:          #141414;
+  --gold:         #c9a84c;
+  --gold-light:   #e8c97a;
+  --gold-dim:     rgba(201,168,76,0.12);
+  --gold-border:  rgba(201,168,76,0.2);
+  --gold-bright:  rgba(201,168,76,0.4);
+  --text:         #f5f3ee;
+  --text-muted:   #9e9b8e;
+  --text-dim:     #4a4840;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --maxw: 1200px;
+  --nav-h: 72px;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+::selection { background: var(--gold); color: var(--bg); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--text-dim); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-border); }
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+section {
+  position: relative;
+  padding: 120px 0;
+}
+section.cv-auto { content-visibility: auto; contain-intrinsic-size: 1px 800px; }
+
+.label-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.label-tag::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(30px, 4.5vw, 48px);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin-bottom: 16px;
+}
+.section-sub {
+  color: var(--text-muted);
+  font-size: 17px;
+  max-width: 560px;
+  margin-bottom: 56px;
+}
+
+.gold-line {
+  height: 1px;
+  width: 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transition: width 1s ease;
+  margin: 0 auto;
+}
+.gold-line.visible { width: 100%; }
+
+/* ============================================================
+   REVEAL ANIMATION
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 15px 28px;
+  border-radius: 10px;
+  border: 1px solid var(--gold-border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  white-space: nowrap;
+}
+.btn:hover {
+  border-color: var(--gold-bright);
+  transform: translateY(-2px);
+}
+.btn-primary {
+  background: var(--gold);
+  color: #0a0a0a;
+  border-color: var(--gold);
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  box-shadow: 0 8px 30px rgba(201,168,76,0.25);
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(8,8,8,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gold-border);
+}
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+}
+.logo .dot { color: var(--gold); margin-left: 1px; }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+}
+.nav-links a {
+  font-size: 14px;
+  color: var(--text-muted);
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: 1px solid var(--gold-border);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+.nav-cta:hover {
+  border-color: var(--gold-bright);
+  background: var(--gold-dim);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--nav-h);
+}
+
+/* radial glow no fundo */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 20%; left: 50%;
+  transform: translateX(-50%);
+  width: 900px; height: 600px;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.07), transparent 70%);
+  pointer-events: none;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: float linear infinite;
+}
+@keyframes float {
+  0%   { transform: translateY(20px); }
+  50%  { transform: translateY(-20px); }
+  100% { transform: translateY(20px); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border: 1px solid var(--gold-border);
+  border-radius: 100px;
+  background: rgba(255,255,255,0.02);
+  margin-bottom: 32px;
+}
+.hero-badge .pulse {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 0 rgba(201,168,76,0.6);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(201,168,76,0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(201,168,76,0); }
+  100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(56px, 9vw, 96px);
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  margin-bottom: 4px;
+}
+.hero-role {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(40px, 6.5vw, 72px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+.hero-role .gold { color: var(--gold); }
+
+.hero-subtitle {
+  font-size: clamp(17px, 2.2vw, 21px);
+  color: var(--text);
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+.hero-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+.stat .stat-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.stat .stat-num .suffix { color: var(--gold); }
+.stat .stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+.scroll-indicator span {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: "";
+  position: absolute;
+  top: -50%; left: 0;
+  width: 100%; height: 50%;
+  background: var(--gold-light);
+  animation: scrolldown 2s infinite;
+}
+@keyframes scrolldown {
+  0%   { top: -50%; }
+  100% { top: 120%; }
+}
+
+/* ============================================================
+   SOBRE
+   ============================================================ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: start;
+}
+.about-text p {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.8;
+}
+.about-text p:first-child {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+}
+.about-text strong { color: var(--gold-light); font-weight: 500; }
+
+.timeline-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--gold-border);
+  border-radius: 16px;
+  padding: 36px;
+}
+.timeline-card h3 {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 28px;
+  position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 5px; top: 18px;
+  width: 1px; height: calc(100% - 8px);
+  background: var(--gold-border);
+}
+.tl-dot {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.tl-dot.gold { background: var(--gold); box-shadow: 0 0 10px rgba(201,168,76,0.5); }
+.tl-dot.gray { background: var(--text-dim); }
+.tl-content .tl-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--text);
+}
+.tl-content .tl-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.tl-content .tl-period {
+  font-size: 12px;
+  color: var(--gold);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   STACK
+   ============================================================ */
+#stack { background: var(--bg2); }
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.stack-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--gold-border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.stack-card:hover {
+  border-color: var(--gold-bright);
+  transform: translateY(-4px);
+}
+.stack-card.featured { border-color: rgba(201,168,76,0.32); }
+.stack-card h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.stack-card.featured h3 { color: var(--gold-light); }
+.tags { display: flex; flex-wrap: wrap; gap: 9px; }
+.tag {
+  font-size: 13px;
+  padding: 7px 13px;
+  border: 1px solid var(--gold-border);
+  border-radius: 8px;
+  background: var(--gold-dim);
+  color: var(--text-muted);
+  transition: transform 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.tag:hover {
+  transform: translateY(-2px);
+  color: var(--text);
+  border-color: var(--gold-bright);
+}
+.stack-card.featured .tag {
+  color: var(--gold-light);
+  border-color: rgba(201,168,76,0.35);
+  background: rgba(201,168,76,0.14);
+}
+
+/* ============================================================
+   PROJETOS / CARROSSEL
+   ============================================================ */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.carousel-track {
+  display: flex;
+  will-change: transform;
+}
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  opacity: 0.35;
+  transition: opacity 0.5s ease;
+  padding: 4px;
+}
+.slide.active { opacity: 1; }
+.slide-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--gold-border);
+  border-radius: 18px;
+  padding: 48px;
+  min-height: 420px;
+}
+.slide-text .slide-eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.slide-text h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.6vw, 30px);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+.slide-text p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+.slide-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.metric-pill {
+  font-size: 13px;
+  padding: 7px 14px;
+  border: 1px solid var(--gold-border);
+  border-radius: 100px;
+  color: var(--text-muted);
+  background: var(--gold-dim);
+}
+.metric-pill.gold {
+  color: var(--gold-light);
+  border-color: rgba(201,168,76,0.35);
+  background: rgba(201,168,76,0.14);
+}
+.slide-emojis { font-size: 28px; letter-spacing: 12px; margin-bottom: 18px; }
+.slide-quote {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--gold-light);
+  margin-top: 18px;
+  padding-left: 16px;
+  border-left: 2px solid var(--gold);
+}
+.stack-row { margin-top: 14px; }
+.stack-row .stack-row-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+/* placeholder de imagem */
+.img-placeholder {
+  background: #0f0f0f;
+  border: 1px dashed rgba(201,168,76,0.3);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+.img-placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, rgba(201,168,76,0.05), transparent 70%);
+}
+.img-placeholder-inner { text-align: center; position: relative; z-index: 1; }
+.img-icon { font-size: 32px; display: block; margin-bottom: 12px; opacity: 0.4; }
+.img-label { display: block; font-size: 14px; color: rgba(201,168,76,0.6); font-weight: 500; }
+.img-hint { display: block; font-size: 11px; color: #4a4840; margin-top: 6px; }
+
+/* controles do carrossel */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+}
+.carousel-arrows { display: flex; gap: 12px; }
+.c-arrow {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-border);
+  background: transparent;
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease;
+}
+.c-arrow:hover {
+  border-color: var(--gold-bright);
+  background: var(--gold-dim);
+}
+.carousel-dots { display: flex; gap: 10px; }
+.c-dot {
+  font-family: var(--font-display);
+  font-size: 12px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.c-dot.active {
+  color: var(--bg);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+/* feature cards abaixo do carrossel */
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 64px;
+}
+.feature-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--gold-border);
+  border-radius: 14px;
+  padding: 28px 24px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.feature-card:hover {
+  border-color: var(--gold-bright);
+  transform: translateY(-4px);
+}
+.feature-card .fc-icon { font-size: 26px; margin-bottom: 14px; }
+.feature-card .fc-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+.projects-cta { text-align: center; margin-top: 48px; }
+
+/* ============================================================
+   PROCESSO
+   ============================================================ */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.process-card {
+  position: relative;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--gold-border);
+  border-radius: 16px;
+  padding: 40px 32px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.process-card:hover {
+  border-color: var(--gold-bright);
+  transform: translateY(-4px);
+}
+.process-card .pc-num {
+  position: absolute;
+  top: 10px; right: 20px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 120px;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.08;
+  pointer-events: none;
+}
+.process-card .pc-step {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.process-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.process-card p {
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ============================================================
+   CONTATO
+   ============================================================ */
+#contact { text-align: center; overflow: hidden; }
+#contact .orb {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: var(--gold);
+  filter: blur(120px);
+  opacity: 0.06;
+  pointer-events: none;
+}
+#contact .container { position: relative; z-index: 1; }
+.contact-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(36px, 6vw, 64px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 18px;
+}
+.contact-sub {
+  color: var(--text-muted);
+  font-size: 18px;
+  margin-bottom: 48px;
+}
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.contact-links .btn { min-width: 180px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  border-top: 1px solid var(--gold-border);
+  padding: 40px 0;
+}
+footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+footer .foot-text { font-size: 13px; color: var(--text-muted); }
+footer .foot-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+}
+footer .foot-logo .dot { color: var(--gold); }
+footer .foot-logo:hover { color: var(--gold); transition: color 0.3s; }
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+@media (max-width: 900px) {
+  .feature-cards { grid-template-columns: 1fr 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+  .slide-inner { grid-template-columns: 1fr; gap: 28px; padding: 32px; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 72px 0; }
+  .container { padding: 0 20px; }
+  nav .nav-links { display: none; }
+  .hero-name { font-size: clamp(38px, 10vw, 56px); }
+  .hero-role { font-size: clamp(28px, 8vw, 44px); }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .stack-grid { grid-template-columns: 1fr 1fr; }
+  .hero-stats { gap: 32px; }
+  .stat .stat-num { font-size: 32px; }
+}
+
+@media (max-width: 480px) {
+  .stack-grid { grid-template-columns: 1fr; }
+  .feature-cards { grid-template-columns: 1fr; }
+  .hero-ctas { flex-direction: column; align-items: stretch; }
+  .contact-links { flex-direction: column; align-items: stretch; }
+  .contact-links .btn { width: 100%; }
+  .slide-inner { padding: 24px; }
+  .carousel-dots { gap: 6px; }
+  .c-dot { width: 28px; height: 28px; }
+}
+
+/* ============================================================
+   ACESSIBILIDADE
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav id="nav">
+  <div class="container">
+    <a href="#top" class="logo" aria-label="Guilherme Rocha — início">GR<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#processo">Processo</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Falar comigo</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<header class="hero" id="top">
+  <div class="particles" id="particles" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge" data-hero>
+        <span class="pulse" aria-hidden="true"></span>
+        Disponível para projetos
+      </div>
+      <h1 class="hero-name" data-hero>Guilherme Rocha</h1>
+      <div class="hero-role" data-hero><span class="gold">AI-Native</span> Developer</div>
+      <p class="hero-subtitle" data-hero>Construo produtos reais com IA · Co-fundador do MultiClipHub</p>
+      <p class="hero-desc" data-hero>
+        Não sigo o caminho tradicional. Uso Claude, Grok, Gemini e automações como alavanca
+        de produção real — do conceito ao deploy, com velocidade e produto no centro.
+      </p>
+      <div class="hero-ctas" data-hero>
+        <a href="#projetos" class="btn btn-primary">Ver projetos →</a>
+        <a href="#contact" class="btn">Entrar em contato</a>
+      </div>
+      <div class="hero-stats" data-hero id="hero-stats">
+        <div class="stat">
+          <div class="stat-num" data-count="1" data-suffix="+">0</div>
+          <div class="stat-label">SaaS lançado</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="3" data-suffix="">0</div>
+          <div class="stat-label">Plataformas integradas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" data-count="100" data-suffix="%">0</div>
+          <div class="stat-label">AI-powered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</header>
+
+<!-- ============================================================
+     SOBRE
+     ============================================================ -->
+<section id="sobre" class="cv-auto">
+  <div class="container">
+    <div class="reveal label-tag">Sobre mim</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="reveal">Não sou um dev tradicional. Sou um builder.</p>
+        <p class="reveal">
+          Fundei o <strong>MultiClipHub</strong> — plataforma SaaS completa para criadores
+          de conteúdo, distribuindo clips para TikTok, Reels e Shorts simultaneamente.
+          Fui responsável por produto, arquitetura, copy, precificação e operação.
+          A IA foi minha ferramenta, não o autor.
+        </p>
+        <p class="reveal">
+          Também tenho experiência profissional em ambiente corporativo — promovido de
+          Auxiliar a Assistente de PCP na <strong>Gimi Manutenções</strong> em menos de
+          2 anos. Isso me deu visão de processo e disciplina.
+        </p>
+      </div>
+      <div class="reveal timeline-card">
+        <h3>Trajetória</h3>
+        <div class="timeline-item">
+          <span class="tl-dot gold" aria-hidden="true"></span>
+          <div class="tl-content">
+            <div class="tl-title">Co-fundador &amp; Dev — MultiClipHub</div>
+            <div class="tl-period">2025 – Presente</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="tl-dot gold" aria-hidden="true"></span>
+          <div class="tl-content">
+            <div class="tl-title">AI-Native Builder</div>
+            <div class="tl-meta">Claude · Grok · Gemini</div>
+            <div class="tl-period">2024 – Presente</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="tl-dot gray" aria-hidden="true"></span>
+          <div class="tl-content">
+            <div class="tl-title">Assistente de PCP — Gimi Manutenções</div>
+            <div class="tl-period">Nov 2023 – Presente</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="tl-dot gray" aria-hidden="true"></span>
+          <div class="tl-content">
+            <div class="tl-title">Suzano, SP</div>
+            <div class="tl-meta">Disponível remotamente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STACK
+     ============================================================ -->
+<section id="stack" class="cv-auto">
+  <div class="container">
+    <div class="reveal label-tag">Stack &amp; Ferramentas</div>
+    <h2 class="reveal section-title">O que uso para construir</h2>
+    <div class="section-sub reveal" aria-hidden="true"></div>
+    <div class="stack-grid">
+      <div class="reveal stack-card">
+        <h3>Frontend</h3>
+        <div class="tags">
+          <span class="tag">Next.js</span><span class="tag">TypeScript</span>
+          <span class="tag">React</span><span class="tag">HTML5</span>
+          <span class="tag">CSS3</span><span class="tag">Tailwind</span>
+        </div>
+      </div>
+      <div class="reveal stack-card">
+        <h3>Backend &amp; Infra</h3>
+        <div class="tags">
+          <span class="tag">Supabase</span><span class="tag">Node.js</span>
+          <span class="tag">Stripe</span><span class="tag">Vercel</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="reveal stack-card featured">
+        <h3>IA &amp; Automação</h3>
+        <div class="tags">
+          <span class="tag">Claude AI</span><span class="tag">Claude Code</span>
+          <span class="tag">Grok</span><span class="tag">Gemini</span>
+          <span class="tag">Cowork</span><span class="tag">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="reveal stack-card">
+        <h3>Produto</h3>
+        <div class="tags">
+          <span class="tag">Product Design</span><span class="tag">UX Copy</span>
+          <span class="tag">Precificação SaaS</span><span class="tag">Go-to-market</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJETOS / CARROSSEL
+     ============================================================ -->
+<section id="projetos" class="cv-auto">
+  <div class="container">
+    <div class="reveal label-tag">Projetos</div>
+    <h2 class="reveal section-title">MultiClipHub — produto principal</h2>
+    <p class="reveal section-sub">SaaS em produção. Código real. Usuários reais.</p>
+
+    <div class="reveal carousel" id="carousel">
+      <div class="carousel-track" id="track">
+
+        <!-- SLIDE 1 -->
+        <div class="slide active">
+          <div class="slide-inner">
+            <div class="slide-text">
+              <div class="slide-eyebrow">01 — Overview</div>
+              <h3>Distribuição simultânea para TikTok, Reels e Shorts</h3>
+              <p>Um upload publica nas 3 plataformas ao mesmo tempo. Zero trabalho braçal.
+                 Máximo alcance para criadores de conteúdo.</p>
+              <div class="slide-metrics">
+                <span class="metric-pill gold">3 plataformas</span>
+                <span class="metric-pill">3 planos</span>
+                <span class="metric-pill">distribuição automática</span>
+              </div>
+            </div>
+            <div class="img-placeholder" data-label="Landing Page">
+              <div class="img-placeholder-inner">
+                <span class="img-icon" aria-hidden="true">🖥</span>
+                <span class="img-label">Landing Page</span>
+                <span class="img-hint">Substituir por screenshot real</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide">
+          <div class="slide-inner">
+            <div class="slide-text">
+              <div class="slide-eyebrow">02 — Dashboard</div>
+              <h3>Dashboard analítico completo</h3>
+              <p>Acompanhe posts, views totais, plataformas conectadas e sequência de
+                 publicações em um único painel.</p>
+              <div class="slide-metrics">
+                <span class="metric-pill gold">Posts</span>
+                <span class="metric-pill gold">Views</span>
+                <span class="metric-pill">Plataformas</span>
+                <span class="metric-pill">Streak</span>
+              </div>
+            </div>
+            <div class="img-placeholder" data-label="Dashboard">
+              <div class="img-placeholder-inner">
+                <span class="img-icon" aria-hidden="true">🖥</span>
+                <span class="img-label">Dashboard</span>
+                <span class="img-hint">Substituir por screenshot real</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="slide">
+          <div class="slide-inner">
+            <div class="slide-text">
+              <div class="slide-eyebrow">03 — Gestão de Canais</div>
+              <h3>OAuth integrado com as 3 plataformas</h3>
+              <p>Conexão segura com TikTok, Instagram Reels e YouTube Shorts.
+                 Gerencie todos os canais em um só lugar.</p>
+              <div class="slide-emojis" aria-hidden="true">🎵 📸 ▶️</div>
+              <div class="slide-metrics">
+                <span class="metric-pill">TikTok</span>
+                <span class="metric-pill">Instagram Reels</span>
+                <span class="metric-pill">YouTube Shorts</span>
+              </div>
+            </div>
+            <div class="img-placeholder" data-label="Gestão de Canais">
+              <div class="img-placeholder-inner">
+                <span class="img-icon" aria-hidden="true">🖥</span>
+                <span class="img-label">Gestão de Canais</span>
+                <span class="img-hint">Substituir por screenshot real</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="slide">
+          <div class="slide-inner">
+            <div class="slide-text">
+              <div class="slide-eyebrow">04 — Ranking</div>
+              <h3>Ranking gamificado entre criadores</h3>
+              <p>Kings of Reach (mais views) e Machine Gun (mais consistência).
+                 Competição mensal que engaja a comunidade.</p>
+              <div class="slide-metrics">
+                <span class="metric-pill gold">🏆 Kings of Reach</span>
+                <span class="metric-pill gold">⚡ Machine Gun</span>
+              </div>
+            </div>
+            <div class="img-placeholder" data-label="Ranking">
+              <div class="img-placeholder-inner">
+                <span class="img-icon" aria-hidden="true">🖥</span>
+                <span class="img-label">Ranking</span>
+                <span class="img-hint">Substituir por screenshot real</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5 -->
+        <div class="slide">
+          <div class="slide-inner">
+            <div class="slide-text">
+              <div class="slide-eyebrow">05 — Stack &amp; Build</div>
+              <h3>Construído com IA — do conceito ao deploy</h3>
+              <p>Todo o produto foi desenvolvido usando IA como ferramenta de produção.
+                 As decisões de produto, arquitetura e execução foram minhas.</p>
+              <div class="stack-row">
+                <div class="stack-row-label">Ferramentas de IA</div>
+                <div class="slide-metrics">
+                  <span class="metric-pill gold">Claude Code</span>
+                  <span class="metric-pill gold">Claude Chat</span>
+                  <span class="metric-pill gold">Grok</span>
+                  <span class="metric-pill gold">Gemini</span>
+                  <span class="metric-pill gold">Cowork</span>
+                </div>
+              </div>
+              <div class="stack-row">
+                <div class="stack-row-label">Stack técnico</div>
+                <div class="slide-metrics">
+                  <span class="metric-pill">Next.js</span>
+                  <span class="metric-pill">TypeScript</span>
+                  <span class="metric-pill">Supabase</span>
+                  <span class="metric-pill">Stripe</span>
+                  <span class="metric-pill">Vercel</span>
+                </div>
+              </div>
+              <p class="slide-quote">A IA foi minha ferramenta, não o autor.</p>
+            </div>
+            <div class="img-placeholder" data-label="Build com IA">
+              <div class="img-placeholder-inner">
+                <span class="img-icon" aria-hidden="true">🖥</span>
+                <span class="img-label">Perfil / Build</span>
+                <span class="img-hint">Substituir por screenshot real</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- controles -->
+    <div class="carousel-controls reveal">
+      <div class="carousel-arrows">
+        <button class="c-arrow" id="prevBtn" aria-label="Slide anterior">←</button>
+        <button class="c-arrow" id="nextBtn" aria-label="Próximo slide">→</button>
+      </div>
+      <div class="carousel-dots" id="dots" role="tablist" aria-label="Navegação do carrossel"></div>
+    </div>
+
+    <!-- feature cards -->
+    <div class="feature-cards">
+      <div class="reveal feature-card">
+        <div class="fc-icon" aria-hidden="true">⚡</div>
+        <div class="fc-title">Distribuição simultânea</div>
+      </div>
+      <div class="reveal feature-card">
+        <div class="fc-icon" aria-hidden="true">📊</div>
+        <div class="fc-title">Analytics unificado</div>
+      </div>
+      <div class="reveal feature-card">
+        <div class="fc-icon" aria-hidden="true">🏆</div>
+        <div class="fc-title">Ranking gamificado</div>
+      </div>
+      <div class="reveal feature-card">
+        <div class="fc-icon" aria-hidden="true">🔗</div>
+        <div class="fc-title">OAuth integrado</div>
+      </div>
+    </div>
+
+    <div class="projects-cta reveal">
+      <a href="https://multicliphub.com" target="_blank" rel="noopener" class="btn btn-primary">Ver MultiClipHub →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESSO
+     ============================================================ -->
+<section id="processo" class="cv-auto">
+  <div class="container">
+    <div class="reveal label-tag">Como trabalho</div>
+    <h2 class="reveal section-title">Do zero ao produto em 3 etapas</h2>
+    <div class="section-sub reveal" aria-hidden="true"></div>
+    <div class="process-grid">
+      <div class="reveal process-card">
+        <div class="pc-num" aria-hidden="true">01</div>
+        <div class="pc-step">01 · Ideia &amp; Produto</div>
+        <h3>Ideia &amp; Produto</h3>
+        <p>Defino o problema, quebro em partes menores, documento contexto e tomo decisões
+           de produto antes de escrever uma linha de código. Produto primeiro, tecnologia depois.</p>
+      </div>
+      <div class="reveal process-card">
+        <div class="pc-num" aria-hidden="true">02</div>
+        <div class="pc-step">02 · Build com IA</div>
+        <h3>Build com IA</h3>
+        <p>Claude Code e Cowork como pair programmer — itero rápido, valido cada decisão técnica,
+           uso Grok e Gemini para perspectivas diferentes. Eu orquestro, a IA executa.</p>
+      </div>
+      <div class="reveal process-card">
+        <div class="pc-num" aria-hidden="true">03</div>
+        <div class="pc-step">03 · Entrega &amp; Deploy</div>
+        <h3>Entrega &amp; Deploy</h3>
+        <p>Produto funcionando, seguro, publicado. Vercel para deploy, Supabase para dados,
+           Stripe para pagamentos. Do MVP ao produto com usuários reais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTATO
+     ============================================================ -->
+<section id="contact" class="cv-auto">
+  <div class="orb" aria-hidden="true"></div>
+  <div class="container">
+    <div class="reveal label-tag" style="justify-content:center;">Contato</div>
+    <h2 class="reveal contact-title">Vamos construir algo juntos?</h2>
+    <p class="reveal contact-sub">Aberto a projetos, parcerias e oportunidades em tech.</p>
+    <div class="contact-links reveal">
+      <a href="https://wa.me/5511963159184" target="_blank" rel="noopener" class="btn">💬 WhatsApp</a>
+      <a href="https://www.linkedin.com/in/guilherme-rocha-99138b2b2/" target="_blank" rel="noopener" class="btn">💼 LinkedIn</a>
+      <a href="mailto:guisantosmiguelrocha@gmail.com" class="btn">✉️ Email</a>
+      <a href="https://multicliphub.com" target="_blank" rel="noopener" class="btn btn-primary">🌐 MultiClipHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="container">
+    <div class="foot-text">Feito por Guilherme Rocha · AI-Native Developer · Suzano, SP · 2025</div>
+    <a href="#top" class="foot-logo" aria-label="Voltar ao topo">GR<span class="dot">.</span></a>
+  </div>
+</footer>
+
+<!-- ============================================================
+     GSAP via jsDelivr
+     ============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasGsap = typeof window.gsap !== 'undefined';
+
+  /* ---------------------------------------------------------
+     1. PARTÍCULAS DOURADAS (CSS, geradas via JS)
+     --------------------------------------------------------- */
+  (function buildParticles() {
+    var host = document.getElementById('particles');
+    if (!host || prefersReduced) return;
+    var count = 25;
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < count; i++) {
+      var p = document.createElement('div');
+      p.className = 'particle';
+      var size = 2 + Math.random() * 2;            // 2-4px
+      var dur = 8 + Math.random() * 12;            // 8-20s
+      var op = 0.2 + Math.random() * 0.3;          // 0.2-0.5
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.left = (Math.random() * 100) + '%';
+      p.style.top = (Math.random() * 100) + '%';
+      p.style.opacity = op;
+      p.style.animationDuration = dur + 's';
+      p.style.animationDelay = (-Math.random() * dur) + 's';
+      frag.appendChild(p);
+    }
+    host.appendChild(frag);
+  })();
+
+  /* ---------------------------------------------------------
+     2. NAV SCROLL
+     --------------------------------------------------------- */
+  var nav = document.getElementById('nav');
+  function onScroll() {
+    if (window.scrollY > 60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------------------------------------------------------
+     3. HERO ENTRANCE
+     --------------------------------------------------------- */
+  (function heroEntrance() {
+    var els = document.querySelectorAll('[data-hero]');
+    if (prefersReduced || !hasGsap) {
+      els.forEach(function (el) { el.style.opacity = 1; });
+      return;
+    }
+    gsap.set(els, { opacity: 0, y: 24 });
+    gsap.to(els, {
+      opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+      stagger: 0.1, delay: 0.15
+    });
+  })();
+
+  /* ---------------------------------------------------------
+     4. REVEAL ON SCROLL + GOLD LINE + STATS COUNTER
+     --------------------------------------------------------- */
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      // stagger entre irmãos .reveal
+      var siblings = Array.prototype.filter.call(
+        el.parentElement.children,
+        function (c) { return c.classList.contains('reveal'); }
+      );
+      var idx = siblings.indexOf(el);
+      var delay = idx > 0 ? Math.min(idx, 6) * 0.08 : 0;
+      el.style.transitionDelay = delay + 's';
+      el.classList.add('visible');
+      revealObserver.unobserve(el);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .gold-line').forEach(function (el) {
+    revealObserver.observe(el);
+  });
+
+  /* STATS COUNTER */
+  function animateCounter(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1500;
+    var start = null;
+    function ease(t) { return 1 - Math.pow(1 - t, 3); } // easeOutCubic
+    function step(ts) {
+      if (start === null) start = ts;
+      var prog = Math.min((ts - start) / duration, 1);
+      var val = Math.round(ease(prog) * target);
+      el.textContent = val + suffix;
+      if (prog < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    }
+    if (prefersReduced) { el.textContent = target + suffix; return; }
+    requestAnimationFrame(step);
+  }
+  var statsObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.querySelectorAll('[data-count]').forEach(animateCounter);
+      statsObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+  var heroStats = document.getElementById('hero-stats');
+  if (heroStats) statsObserver.observe(heroStats);
+
+  /* ---------------------------------------------------------
+     5. CARROSSEL
+     --------------------------------------------------------- */
+  (function carousel() {
+    var track = document.getElementById('track');
+    if (!track) return;
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
+    var dotsHost = document.getElementById('dots');
+    var prevBtn = document.getElementById('prevBtn');
+    var nextBtn = document.getElementById('nextBtn');
+    var index = 0;
+    var total = slides.length;
+
+    // dots numerados
+    var dots = [];
+    for (var i = 0; i < total; i++) {
+      (function (i) {
+        var b = document.createElement('button');
+        b.className = 'c-dot' + (i === 0 ? ' active' : '');
+        b.textContent = (i + 1);
+        b.setAttribute('role', 'tab');
+        b.setAttribute('aria-label', 'Ir para slide ' + (i + 1));
+        b.addEventListener('click', function () { goTo(i); });
+        dotsHost.appendChild(b);
+        dots.push(b);
+      })(i);
+    }
+
+    function render() {
+      var offset = -index * 100;
+      if (hasGsap && !prefersReduced) {
+        gsap.to(track, { xPercent: offset, duration: 0.5, ease: 'power2.out' });
+      } else {
+        track.style.transform = 'translateX(' + offset + '%)';
+      }
+      slides.forEach(function (s, i) { s.classList.toggle('active', i === index); });
+      dots.forEach(function (d, i) {
+        d.classList.toggle('active', i === index);
+        d.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      });
+    }
+    function goTo(i) { index = (i + total) % total; render(); }
+    function next() { goTo(index + 1); }
+    function prev() { goTo(index - 1); }
+
+    nextBtn.addEventListener('click', next);
+    prevBtn.addEventListener('click', prev);
+
+    // teclado
+    document.getElementById('carousel').setAttribute('tabindex', '0');
+    document.getElementById('carousel').addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+
+    // touch / drag (threshold 50px)
+    var startX = 0, dragging = false;
+    function down(x) { startX = x; dragging = true; }
+    function up(x) {
+      if (!dragging) return;
+      dragging = false;
+      var diff = x - startX;
+      if (Math.abs(diff) > 50) { if (diff < 0) next(); else prev(); }
+    }
+    var carouselEl = document.getElementById('carousel');
+    carouselEl.addEventListener('touchstart', function (e) { down(e.touches[0].clientX); }, { passive: true });
+    carouselEl.addEventListener('touchend', function (e) { up(e.changedTouches[0].clientX); }, { passive: true });
+    carouselEl.addEventListener('mousedown', function (e) { down(e.clientX); });
+    window.addEventListener('mouseup', function (e) { up(e.clientX); });
+
+    render();
+  })();
+
+})();
+</script>
+</body>
+</html>
