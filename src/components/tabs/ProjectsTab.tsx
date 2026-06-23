@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence, Variants } from 'framer-motion'
 
 interface Slide {
@@ -23,7 +24,7 @@ const slides: Slide[] = [
     num: '01',
     title: 'Distribuição simultânea',
     desc: 'Um upload publica no TikTok, Instagram Reels e YouTube Shorts ao mesmo tempo. Zero trabalho braçal. Máximo alcance.',
-    img: '/screenshots/landing.png',
+    img: '/screenshots/landing.webp',
     imgAlt: 'Landing page do MultiClipHub',
     placeholder: 'Landing Page',
     stats: [
@@ -36,7 +37,7 @@ const slides: Slide[] = [
     num: '02',
     title: 'Dashboard analítico',
     desc: 'Posts, views totais, plataformas conectadas e streak de publicações em um painel único e limpo.',
-    img: '/screenshots/dashboard.png',
+    img: '/screenshots/dashboard.webp',
     imgAlt: 'Dashboard do MultiClipHub',
     placeholder: 'Dashboard',
     metrics: ['📊 Posts este mês', '👁 Views totais', '🔗 Plataformas', '🔥 Sequência'],
@@ -45,7 +46,7 @@ const slides: Slide[] = [
     num: '03',
     title: 'OAuth integrado',
     desc: 'Conexão segura com TikTok, Instagram e YouTube. Gerencie todos os canais em um único lugar.',
-    img: '/screenshots/canais.png',
+    img: '/screenshots/canais.webp',
     imgAlt: 'Gestão de canais',
     placeholder: 'Gestão de Canais',
     platforms: ['🎵 TikTok', '📸 Instagram', '▶️ YouTube'],
@@ -54,7 +55,7 @@ const slides: Slide[] = [
     num: '04',
     title: 'Ranking gamificado',
     desc: 'Kings of Reach e Machine Gun — competição mensal que engaja toda a comunidade de criadores.',
-    img: '/screenshots/ranking.png',
+    img: '/screenshots/ranking.webp',
     imgAlt: 'Ranking gamificado',
     placeholder: 'Ranking',
     badges: ['🏆 Kings of Reach — mais views', '⚡ Machine Gun — mais consistência'],
@@ -63,7 +64,7 @@ const slides: Slide[] = [
     num: '05',
     title: 'Construído com IA',
     desc: 'Do conceito ao deploy usando IA como ferramenta de produção real. As decisões foram minhas.',
-    img: '/screenshots/perfil.png',
+    img: '/screenshots/perfil.webp',
     imgAlt: 'Perfil do criador',
     placeholder: 'Perfil',
     aiTools: ['Claude Code', 'Claude Chat', 'Grok', 'Gemini', 'Cowork'],
@@ -197,16 +198,15 @@ export default function ProjectsTab() {
               )}
             </div>
 
-            <div className="relative rounded-lg overflow-hidden border border-white/6 bg-white/[0.015] flex items-center justify-center min-h-[180px]">
-              <div className="text-center">
-                <div className="text-3xl mb-3 opacity-25" aria-hidden="true">
-                  🖥
-                </div>
-                <p className="font-mono text-xs text-[#4a4840]">{slide.placeholder}</p>
-                <p className="font-mono text-[10px] text-[#2a2820] mt-1">
-                  {slide.img.replace('/screenshots/', 'screenshots/')}
-                </p>
-              </div>
+            <div className="relative rounded-lg overflow-hidden border border-white/6 bg-white/[0.015] min-h-[180px] md:min-h-[260px]">
+              <Image
+                src={slide.img}
+                alt={slide.imgAlt}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-top"
+                priority={page === 0}
+              />
             </div>
           </motion.div>
         </AnimatePresence>
