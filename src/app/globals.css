@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #06060a;
+  --bg2: #0c0c12;
+  --bg3: #101018;
+  --bg4: #16161f;
+
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-bright: #f5dfa0;
+  --gold-dim: rgba(201, 168, 76, 0.1);
+  --gold-border: rgba(201, 168, 76, 0.18);
+  --gold-glow: rgba(201, 168, 76, 0.3);
+
+  --space-blue: rgba(40, 50, 120, 0.15);
+  --space-purple: rgba(80, 30, 120, 0.1);
+  --nebula-gold: rgba(201, 168, 76, 0.04);
+
+  --text: #f0ede6;
+  --text-muted: #9e9b8e;
+  --text-dim: #4a4840;
+
+  --panel-bg: rgba(8, 8, 14, 0.82);
+  --panel-border: rgba(201, 168, 76, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+::selection {
+  background: var(--gold);
+  color: #06060a;
+}
+
+/* Keyframes referenciados por inline styles (animation: shimmer/float/pulseGold) */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulseGold {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.2);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 76, 0.4);
+}
+
+/* Utilitário: esconde scrollbar mas mantém scroll */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,43 +1,59 @@
 # Portfólio — Guilherme Rocha
 
-Portfólio profissional de Guilherme Rocha — AI-Native Developer e Co-fundador do MultiClipHub.
-Arquivo único `index.html` (HTML + CSS + JS inline), GSAP via CDN. Abre direto no navegador, sem servidor.
+Portfólio cinematográfico de Guilherme Rocha — AI-Native Developer e Co-fundador do MultiClipHub.
 
-## Como fazer deploy no Vercel (grátis, 2 minutos)
+Universo 3D interativo (Three.js / React Three Fiber) com intro estilo Marvel (Framer Motion)
+e navegação por abas dentro de um painel flutuante.
 
-### Opção 1 — Arrasta e solta (mais fácil)
-1. Acesse vercel.com e crie uma conta gratuita
-2. No dashboard, clique em "Add New → Project"
-3. Arraste a pasta `portfolio-guilherme-rocha` para a área de upload
-4. Clique em Deploy
-5. Pronto. Seu site fica em: seuusuario.vercel.app
+## Stack
 
-### Opção 2 — Via GitHub (recomendado para atualizações fáceis)
-1. Crie um repositório no GitHub e suba os arquivos
-2. No Vercel, importe o repositório
-3. Cada push no GitHub faz deploy automático
+- **Next.js 14** (App Router) + **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion** — intro, transições entre abas
+- **React Three Fiber** + **Three.js** — campo de estrelas, partículas e nebulosas
+- **Zustand** — estado (aba ativa, intro)
 
-## Como adicionar as screenshots reais
-1. Coloque os prints na pasta `screenshots/`
-2. No `index.html`, substitua os `<div class="img-placeholder">...</div>` por:
-   ```html
-   <img src="screenshots/landing.png" alt="Landing page MultiClipHub" loading="lazy" />
-   ```
-3. Faça novo deploy
+## Desenvolvimento
 
-Telas esperadas (uma por slide do carrossel):
-- `landing.png` — Slide 1 (Overview / Landing Page)
-- `dashboard.png` — Slide 2 (Dashboard)
-- `canais.png` — Slide 3 (Gestão de Canais)
-- `ranking.png` — Slide 4 (Ranking)
-- `perfil.png` — Slide 5 (Stack & Build)
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # build de produção
+npm start        # serve o build
+```
 
-## Antes de publicar — substitua os placeholders de contato
-No `index.html`, na seção `#contact`:
-- WhatsApp: troque `55SEUNUMERO` pelo seu número (ex: `5511999999999`)
-- LinkedIn: confirme a URL do seu perfil
-- Email: já está em `guisantosmiguelrocha@gmail.com` — ajuste se necessário
+## Deploy no Vercel
 
-## Domínio personalizado (opcional, gratuito no Vercel)
-- Em Project Settings → Domains, adicione seu domínio
-- Ex: guilhermerocha.dev (domínio pago) ou manter .vercel.app (grátis)
+O projeto já está conectado ao Vercel. Cada `git push` na branch `main`
+dispara um deploy automático (a Vercel detecta o Next.js sozinha).
+
+Deploy manual:
+```bash
+vercel deploy --prod
+```
+
+## Screenshots reais
+
+As imagens ficam em `public/screenshots/`. No `ProjectsTab.tsx`, troque o bloco
+placeholder de cada slide por:
+```tsx
+import Image from 'next/image'
+// ...
+<Image src={slide.img} alt={slide.imgAlt} fill className="object-cover" />
+```
+e nomeie os arquivos conforme `slide.img` (`landing.png`, `dashboard.png`,
+`canais.png`, `ranking.png`, `perfil.png`).
+
+## Estrutura
+
+```
+src/
+├── app/            layout, page (entry), globals.css
+├── components/
+│   ├── intro/      Intro.tsx (abertura Marvel)
+│   ├── universe/   Universe, StarField, Particles, Nebula (R3F)
+│   ├── panel/      Panel, TabBar, TabContent
+│   └── tabs/       Home, About, Stack, Projects, Process, Contact
+├── lib/            tabs.ts, stack-data.ts
+└── store/          portfolio.ts (Zustand)
+```
