@@ -198,13 +198,13 @@ export default function ProjectsTab() {
               )}
             </div>
 
-            <div className="relative rounded-lg overflow-hidden border border-white/6 bg-white/[0.015] min-h-[180px] md:min-h-[260px]">
+            <div className="relative rounded-lg overflow-hidden border border-white/6 bg-[#06060a] min-h-[200px] md:min-h-[280px] p-2">
               <Image
                 src={slide.img}
                 alt={slide.imgAlt}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-top"
+                className="object-contain"
                 priority={page === 0}
               />
             </div>
@@ -249,7 +249,7 @@ export default function ProjectsTab() {
 
       <div className="flex gap-3">
         <a
-          href="https://multicliphub.com"
+          href="https://www.multicliphub.com.br"
           target="_blank"
           rel="noopener noreferrer"
           className="px-6 py-2.5 rounded-lg bg-gold text-[#06060a] font-display font-semibold text-sm hover:bg-gold-light transition-colors"

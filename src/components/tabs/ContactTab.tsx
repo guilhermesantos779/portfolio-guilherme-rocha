@@ -22,7 +22,7 @@ const links = [
     gold: false,
   },
   { icon: '✉️', label: 'Email', hint: 'Para projetos formais', href: 'mailto:guisantosmiguelrocha@gmail.com', gold: false },
-  { icon: '🌐', label: 'MultiClipHub', hint: 'Ver o produto', href: 'https://multicliphub.com', gold: true },
+  { icon: '🌐', label: 'MultiClipHub', hint: 'Ver o produto', href: 'https://www.multicliphub.com.br', gold: true },
 ]
 
 export default function ContactTab() {
